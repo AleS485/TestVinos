@@ -1,0 +1,544 @@
+
+*{
+    box-sizing: border-box;
+    font-family: "Roboto Condensed", sans-serif;
+    
+}
+
+html{
+
+    /* El scroll suave nativo es el más cómodo porque respeta tu mouse */
+    scroll-behavior: smooth !important;
+    
+    /* Esto ayuda a que el renderizado sea más fluido en monitores de alta tasa de refresco */
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+
+}
+
+
+
+body{
+    overscroll-behavior-y: none;
+    height: 150vh;
+    width: 100vw;
+    margin: 0;
+    overflow-x: hidden;
+    scroll-behavior: smooth !important;
+}
+
+
+
+.contenedor-principal{
+
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    
+
+
+}
+
+
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    height: 14vh;
+    background: rgba(27, 26, 26, 0.4);
+    position: fixed;
+    z-index: 9999;
+    border-bottom: 2px solid white;
+    -webkit-backdrop-filter: blur(5px); 
+    backdrop-filter: blur(5px);
+    
+    /* CLAVE: Transición suave para todos los cambios */
+    transition: all 0.4s ease-in-out; 
+}
+
+.header.header-scroll {
+    height: 10vh; /* Se achica un poco para dar más espacio visual */
+    background: rgba(20, 20, 20, 0.85); /* Se vuelve más oscuro y sólido */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3); /* El borde se vuelve más fino y sutil */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Agrega una sombra para despegarse del fondo */
+}
+
+/* Opcional: Que los links cambien de tamaño levemente al achicarse el header */
+.header.header-scroll .header .botones-header ul li {
+    font-size: 1.1em;
+}
+
+
+
+
+
+
+.header .botones-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5em;
+
+
+}
+
+.header .botones-header ul{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.header .botones-header ul li{
+    display: flex;
+    list-style: none;
+    margin-left: 3em;
+    color: white;
+    font-size: 1.3em;
+    font-family: "SN Pro", sans-serif;
+}
+
+.header .botones-header ul li a{
+    text-decoration: none;
+    color: white;
+    font-family: "SN Pro", sans-serif;
+    transition: all .3s ease-in-out, color 0.3s ease;
+}
+
+.header .botones-header ul li a:hover{
+    color: rgb(222, 177, 53);
+    text-shadow: 0 0 10px rgba(222, 177, 53, 0.5);
+    transform: scale(1.15);
+}
+
+.logo-header-principal{
+
+    margin-right: 5em;
+}
+
+.seccion-principal{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 125vh;
+    text-align: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                    url('img/glass-red-wine-stands-out-against-warmly-lit-wooden-bar.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.primer-seccionp{
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 1.8em;
+    color: rgb(222, 177, 53);
+}
+
+.segundo-seccionp{
+    font-size: 3.5em;
+    font-family: "SN Pro", sans-serif;
+    color: white;
+}
+
+#titulo-tipeado::after {
+    content: "|";
+    margin-left: 5px;
+    color: white;
+    animation: titileo 0.8s infinite;
+}
+
+@keyframes titileo {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+
+
+
+.seccion-nosotros {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 80px; /* Espacio entre la foto y el texto */
+    padding: 100px 40px;
+    align-items: center;
+}
+
+.fotos {
+    flex: 1;
+    /* Definimos un alto fijo para que el texto de abajo NO se mueva nunca */
+    height: 550px; 
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    border-radius: 30px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.fotos img {
+    width: 100%;
+    height: 100%; /* Obliga a la foto a llenar los 550px de alto */
+    
+    /* ESTA ES LA CLAVE: Recorta la foto para que encaje sin deformarse */
+    object-fit: cover; 
+    
+    /* Mantenemos la transición que hablamos antes */
+    transition: opacity 0.6s ease-in-out, transform 0.4s ease;
+    opacity: 1;
+}
+
+.fotos:hover img {
+    transform: scale(1.08); /* Se agranda un 8%. Suficiente para que se note sin exagerar */
+    filter: brightness(1.1);
+}
+
+@media (max-width: 768px) {
+    /* Ajustamos el contenedor de las fotos para pantallas chicas */
+    .fotos {
+        height: 350px; /* Bajamos la altura para que no ocupe toda la pantalla del celu */
+        width: 100%;   /* Que ocupe todo el ancho disponible */
+        max-width: 90%; /* Le damos un poco de aire a los costados */
+        margin-bottom: 20px; /* Espacio extra para que no pegue con el texto de Quienes Somos */
+        box-shadow: 10px -10px 0px #fcfaf8; /* Reducimos la sombra para que no se vea tosca */
+    }
+
+    /* La imagen se adapta sola gracias al object-fit que ya pusimos */
+}
+
+
+.descripcion-somos {
+    flex: 1;
+}
+
+.descripcion-somos h2 {
+    font-family: "SN Pro", sans-serif; /* Fuente elegante */
+    font-size: 3rem;
+    margin: 20px 0;
+    line-height: 1.2;
+}
+
+.descripcion-somos p {
+    font-size: 1.1rem;
+    font-family: "SN Pro", sans-serif;
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.7;
+}
+
+
+.catalogo-vinos{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+.catalogo-vinos h2{
+    font-family: "SN Pro", sans-serif;
+    font-size: 2.4em;
+}
+
+.catalogo-vinos p{
+    font-family: "SN Pro", sans-serif;
+    font-size: 1.4em;
+}
+
+.catalogo-vinos hr{
+    width: 75vw;
+    border: 1px solid rgb(196, 194, 194);
+}
+
+.fila-vinos{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 2.5em;
+    gap: 4em;
+
+}
+
+.vino-card{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.vino-card:hover {
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px); /* Un leve levantamiento para acompañar el zoom */
+}
+
+.vino-imagen {
+    overflow: hidden; /* CLAVE: Corta la imagen si crece más que el div */
+    border-radius: 20px; /* Mantiene las esquinas redondeadas durante el zoom */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.vino-imagen img{
+
+    height: 26em;
+    width: 20em;
+    border-radius: 20px;
+    object-fit: cover;
+
+    
+    transition: transform 0.3s ease;
+
+
+}
+
+.vino-card:hover {
+    /* La tarjeta sube un poquito y la sombra se vuelve más profunda */
+    transform: translateY(-8px);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
+}
+
+.vino-card:hover .vino-imagen img {
+    /* El zoom ocurre al mismo tiempo que el movimiento de la card */
+    transform: scale(1.1); 
+}
+
+.vino-info h3{
+
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 1.4rem;
+
+}
+
+.vino-info p{
+
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 1.2rem;
+
+}
+
+
+.seccion-creador {
+    display: flex;
+    flex-direction: row; /* En PC van uno al lado del otro */
+    justify-content: center;
+    align-items: stretch; /* Esto hace que ambos divs midan lo mismo de alto */
+    width: 100%;
+    margin-top: 8em;
+    background-color: rgb(244, 241, 238); /* Un tono crema más suave como el del hotel */
+}
+
+.seccion-creador .bloque-imagen {
+    flex: 1; /* Ocupa exactamente la mitad */
+    display: flex;
+}
+
+.seccion-creador .bloque-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Clave: la foto se recorta sola para llenar el espacio sin deformarse */
+    /* Quitá el border-radius si querés que la foto pegue contra los bordes como en la referencia */
+    border-radius: 0; 
+}
+
+.seccion-creador .bloque-info {
+    flex: 1; /* Ocupa la otra mitad */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10% 8%; /* Mucho aire para que se vea premium */
+    text-align: left; /* Alineado a la izquierda como la referencia */
+}
+
+.seccion-creador .bloque-info h3 {
+    color: #b59677;
+    font-size: 4.5rem;
+    margin-bottom: 0.5em;
+    line-height: 1.1;
+}
+
+.seccion-creador .bloque-info p {
+    font-size: 2.2rem;
+    line-height: 1.8;
+    color: #555;
+    max-width: 500px; /* Evita que las líneas de texto sean eternas */
+}
+
+/* RESPONSIVE: Para que en el celu se ponga uno abajo del otro */
+@media (max-width: 768px) {
+    .seccion-creador {
+        flex-direction: column;
+    }
+    .seccion-creador .bloque-info {
+        padding: 3em 1.5em;
+    }
+}
+
+/*
+
+.footer{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 15vh;
+    margin-top: rem;
+    background-color:#b59677;
+    border-top: 1px solid #846e58;
+    border-bottom: 1px solid #846e58;
+}
+
+.footer .bloque-svg{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+*/
+
+
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    /* Cambiamos height fijo por padding para que respire */
+    padding: 40px 80px; 
+    background-color: #b59677;
+    border-top: 1px solid #846e58;
+    /* Quitamos el width: 100vw para evitar errores de scroll */
+    width: 100%; 
+    box-sizing: border-box;
+}
+
+.footer .bloque-svg {
+    /* Quitamos el flex interno si solo contiene el SVG */
+    display: block;
+}
+
+.footer .bloque-svg svg {
+    /* Aseguramos que el logo no sea gigante */
+    height: 80px; 
+    width: auto;
+    display: block; /* Elimina espacios fantasma abajo del svg */
+    
+}
+
+.footer .bloque-texto-marca p {
+    font-size: 1.1rem;
+    color: #333; /* Un gris oscuro para que sea legible sobre el dorado */
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+/* Ajuste para celulares */
+@media (max-width: 768px) {
+    .footer {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+        padding: 40px 20px;
+    }
+}
+
+
+/* SECCION RESPONSIVE */
+
+@media (max-width: 1024px) {
+    .header .botones-header { margin-left: 2em; }
+    .logo-header-principal { margin-right: 2em; }
+    .segundo-seccionp { font-size: 2.5em; }
+    .fila-vinos { gap: 2em; flex-wrap: wrap; }
+}
+
+@media (max-width: 768px) {
+    /* 1. Corregimos el Header para que flote sobre la foto */
+    .header { 
+        height: auto; 
+        padding: 15px 0; 
+        flex-direction: column; 
+        gap: 5px; 
+        position: absolute; /* Sigue flotando para evitar el fondo gris */
+        
+        /* Volvemos a tu transparencia original */
+        background: rgba(27, 26, 26, 0.4); 
+        
+        /* Recuperamos tu borde blanco de 2px */
+        border-bottom: 2px solid white; 
+        z-index: 9999;
+
+        -webkit-backdrop-filter: blur(5px); /* Para Safari y iOS */
+        backdrop-filter: blur(5px);
+
+    }
+
+    .logo-header-principal { 
+        margin-right: 0; 
+        order: 1; 
+    }
+
+    .header .botones-header { 
+        margin-left: 0; 
+        order: 2; 
+    }
+
+    .header .botones-header ul li { 
+        margin-left: 10px; 
+        margin-right: 10px;
+        font-size: 1.1em; /* Un poquito más grande para que se lea bien */
+    }
+
+    /* 2. Ajustamos la Sección Principal para que no se tape el texto */
+    /* Ajuste de la sección principal para que el título no quede pegado al borde */
+    .seccion-principal { 
+        padding-top: 150px; 
+    }
+    
+    .segundo-seccionp { font-size: 2.2em; }
+
+    /* 3. El resto de las secciones se mantienen igual de bien */
+    .seccion-nosotros { flex-direction: column; padding: 60px 20px; gap: 40px; }
+    .descripcion-somos { text-align: center; }
+    .descripcion-somos h2 { font-size: 2.2rem; }
+    .fotos img { box-shadow: 10px -10px 0px #fcfaf8; }
+
+    .fila-vinos { flex-direction: column; gap: 3em; align-items: center; }
+    .vino-card { width: 90%; }
+    .vino-imagen img { width: 100%; height: auto; }
+
+    .seccion-creador { flex-direction: column; }
+    .seccion-creador .bloque-info h3 { font-size: 2.8rem; text-align: center; }
+    .seccion-creador .bloque-info p { font-size: 1.4rem; text-align: center; }
+}
+
+
+
+
+
+
+
+
+
+

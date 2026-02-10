@@ -1,0 +1,309 @@
+*{
+    box-sizing: border-box;
+    font-family: "Roboto Condensed", sans-serif;
+    scroll-behavior: smooth;
+}
+
+
+body {
+    height: auto; /* IMPORTANTE: Deja que el contenido defina el largo */
+    min-height: 100vh;
+    width: 100vw;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+
+
+.contenedor-principal{
+
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    
+
+
+}
+
+.header{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    height: 14vh;
+    background: rgba(27, 26, 26, 0.4);
+    position: fixed;
+    z-index: 9999;
+    border-bottom: 2px solid white;
+
+    -webkit-backdrop-filter: blur(5px); 
+    backdrop-filter: blur(5px);
+    
+
+}
+
+.header .botones-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5em;
+
+
+}
+
+.header .botones-header ul{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.header .botones-header ul li{
+    display: flex;
+    list-style: none;
+    margin-left: 3em;
+    color: white;
+    font-size: 1.3em;
+    font-family: "SN Pro", sans-serif;
+}
+
+.header .botones-header ul li a{
+    text-decoration: none;
+    color: white;
+    font-family: "SN Pro", sans-serif;
+    transition: all .3s ease-in-out, color 0.3s ease;
+}
+
+.header .botones-header ul li a:hover{
+    color: rgb(222, 177, 53);
+    text-shadow: 0 0 10px rgba(222, 177, 53, 0.5);
+    transform: scale(1.15);
+}
+
+.logo-header-principal{
+
+    margin-right: 5em;
+}
+
+/* 2. Ajustamos la sección para que use el espacio justo */
+.seccion-contactanos {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh; /* Se estira para llenar la pantalla pero no más */
+    padding: 100px 10% 40px 10%; /* Más espacio arriba por el header */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                    url('img/glass-red-wine.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Bloque Izquierdo */
+.titulos {
+    text-align: left;
+    flex: 1;
+}
+
+.titulos h1 {
+    font-family: "Roboto Condensed", sans-serif;
+    color: white;
+    font-size: 4.5rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.titulos p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.4rem;
+    max-width: 450px;
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+/* Bloque Derecho */
+.medios-contacto {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    flex: 1;
+    align-items: flex-end; /* Alinea los items a la derecha */
+}
+
+.item-red {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    color: white;
+    border-top: 1px solid rgba(255, 255, 255, 0.2); /* Línea divisoria como la foto */
+    padding-top: 20px;
+    width: 100%;
+    max-width: 400px;
+
+    transition: all 0.3s ease;
+
+}
+
+.item-red i {
+    font-size: 2rem;
+}
+
+.item-info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.item-info span {
+    font-family: "Roboto Condensed", sans-serif;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.item-info a {
+    font-family: "SN Pro", sans-serif;
+    color: white;
+    text-decoration: none;
+    font-size: 1.8rem;
+}
+
+.item-red i, 
+.item-info a {
+    transition: all 0.3s ease;
+}
+
+.item-red:hover {
+    /* Un agrandado muy sutil (2%) para no romper el layout */
+    transform: scale(1.02); 
+}
+
+.item-red:hover i,
+.item-red:hover .item-info a {
+    color: rgb(222, 177, 53);
+}
+
+/* Opcional: que la línea divisoria también se ilumine un poco */
+.item-red:hover {
+    border-top: 1px solid rgba(222, 177, 53, 0.5);
+}
+
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .seccion-contactanos {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        padding-top: 100px;
+        gap: 50px;
+    }
+
+    .titulos {
+        text-align: center;
+    }
+
+    .titulos h1 {
+        font-size: 2.8rem;
+    }
+
+    .medios-contacto {
+        align-items: center;
+        width: 100%;
+    }
+
+    .item-red {
+        justify-content: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+}
+
+
+
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    /* Cambiamos height fijo por padding para que respire */
+    padding: 40px 80px; 
+    background-color: #b59677;
+    border-top: 1px solid #846e58;
+    /* Quitamos el width: 100vw para evitar errores de scroll */
+    width: 100%; 
+    box-sizing: border-box;
+}
+
+.footer .bloque-svg {
+    /* Quitamos el flex interno si solo contiene el SVG */
+    display: block;
+}
+
+.footer .bloque-svg svg {
+    /* Aseguramos que el logo no sea gigante */
+    height: 80px; 
+    width: auto;
+    display: block; /* Elimina espacios fantasma abajo del svg */
+    
+}
+
+.footer .bloque-texto-marca p {
+    font-size: 1.1rem;
+    color: #333; /* Un gris oscuro para que sea legible sobre el dorado */
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+
+/* --- RESPONSIVE HEADER Y FOOTER --- */
+
+@media (max-width: 768px) {
+    /* 1. Header Responsive: Flotante con blur y borde blanco */
+    .header { 
+        height: auto; 
+        padding: 15px 0; 
+        flex-direction: column; 
+        gap: 5px; 
+        position: absolute; /* Evita que se vea el fondo gris al no empujar el contenido */
+        background: rgba(27, 26, 26, 0.4); 
+        border-bottom: 2px solid white; 
+        z-index: 9999;
+        -webkit-backdrop-filter: blur(5px);
+        backdrop-filter: blur(5px);
+    }
+
+    .logo-header-principal { 
+        margin-right: 0; 
+        order: 1; /* Logo arriba */
+    }
+
+    .header .botones-header { 
+        margin-left: 0; 
+        order: 2; /* Menú abajo del logo */
+    }
+
+    .header .botones-header ul li { 
+        margin-left: 10px; 
+        margin-right: 10px;
+        font-size: 1.1em; 
+    }
+
+    /* 2. Footer Responsive: Centrado vertical */
+    .footer {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+        padding: 40px 20px;
+    }
+
+    /* 3. Ajuste de espaciado para que el header no tape el título en celu */
+    .seccion-contactanos {
+        padding-top: 160px; /* Espacio extra para compensar el header apilado */
+    }
+}
+
+
