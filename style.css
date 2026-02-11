@@ -72,10 +72,6 @@ body{
 }
 
 
-
-
-
-
 .header .botones-header{
     display: flex;
     flex-direction: row;
@@ -216,6 +212,8 @@ body{
 .descripcion-somos {
     flex: 1;
 }
+
+
 
 .descripcion-somos h2 {
     font-family: "SN Pro", sans-serif; /* Fuente elegante */
@@ -461,6 +459,8 @@ body{
         text-align: center;
         padding: 40px 20px;
     }
+
+    
 }
 
 
@@ -515,7 +515,7 @@ body{
     .seccion-principal { 
         padding-top: 150px; 
         background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-                    url('img/6.jpg');
+                    url('img/4.jpg');
     }
     
     
@@ -523,7 +523,16 @@ body{
 
     /* 3. El resto de las secciones se mantienen igual de bien */
     .seccion-nosotros { flex-direction: column; padding: 60px 20px; gap: 40px; }
-    .descripcion-somos { text-align: center; }
+    .descripcion-somos {
+        text-align: center !important; /* Centra el h2 y los p */
+    }
+
+    .descripcion-somos svg {
+        display: block !important;
+        margin: 0 auto 20px auto !important; /* CENTRADO MANUAL: 0 arriba/abajo, auto a los costados */
+        width: 100px !important; /* Le damos un tamaño fijo para que no flote */
+        height: 100px !important;
+    }
     .descripcion-somos h2 { font-size: 2.2rem; }
     .fotos img { box-shadow: 10px -10px 0px #fcfaf8; }
 
