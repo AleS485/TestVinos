@@ -192,7 +192,47 @@ body {
 }
 
 
+
+
 /* RESPONSIVE */
+
+
+@media (max-width: 1024px) {
+    .seccion-contactanos {
+        /* Bajamos el bloque entero para que no lo tape el header */
+        padding-top: 180px !important; 
+        
+        /* Opcional: Si ves que queda muy apretado de los costados, 
+           podés pasar a la versión centrada un poco antes */
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        gap: 60px;
+    }
+
+    .titulos {
+        text-align: center;
+    }
+
+    .titulos h1 {
+        font-size: 3.2rem; /* Achicamos un poco el título en este rango */
+    }
+
+    .medios-contacto {
+        align-items: center;
+        width: 100%;
+    }
+}
+
+
+
+
+
+
+
+
+
+
 @media (max-width: 900px) {
     .seccion-contactanos {
         flex-direction: column;
@@ -302,7 +342,18 @@ body {
 
     /* 3. Ajuste de espaciado para que el header no tape el título en celu */
     .seccion-contactanos {
-        padding-top: 160px; /* Espacio extra para compensar el header apilado */
+        /* Aumentamos el aire arriba. 25vh es aproximadamente un cuarto de pantalla */
+        padding-top: 25vh !important; 
+        
+        /* Aseguramos que la sección se centre bien verticalmente */
+        justify-content: flex-start; 
+        gap: 30px;
+        min-height: 110vh; /* Le damos un poco más de alto para que no se corte el fondo */
+    }
+
+    .titulos h1 {
+        font-size: 2.5rem; /* Achicamos un pelín más el h1 para que no ocupe tanto lugar */
+        margin-bottom: 15px;
     }
 }
 
