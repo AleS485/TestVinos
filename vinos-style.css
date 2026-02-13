@@ -1,0 +1,168 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                url('img/maderafondo.jpg');
+
+    /* PROPIEDADES CLAVE PARA QUE NO SE ROMPA: */
+    background-size: cover;       /* Cubre toda la pantalla sin deformarse */
+    background-position: center;   /* Centra la foto */
+    background-repeat: no-repeat;  /* Evita que la imagen se repita */
+    background-attachment: fixed;
+
+
+
+    font-family: "Roboto Condensed", sans-serif;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.contenedor-principal {
+    display: flex;
+    flex-direction: row;
+    width: 90vw;
+    max-width: 1200px;
+    background: rgb(26, 26, 26);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    overflow: hidden;
+    margin: 40px 0;
+}
+
+/* --- SECCIÓN IMAGEN --- */
+.img-container {
+    flex: 1;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    border-right: 1px solid #eee;
+    cursor: pointer; 
+    
+}
+
+.img-container img {
+    max-height: 80vh;
+    width: auto;
+    object-fit: contain;
+    /* Efecto sutil de sombra para que la botella no flote plana */
+    
+    border-radius: 15px;
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.img-container:hover img {
+    transform: scale(1.08); /* Mini zoom interno */
+    filter: brightness(1.15) drop-shadow(0 0 15px rgba(255, 255, 255, 0.2)); /* Brillo y sombra suave */
+}
+
+/* --- SECCIÓN INFO --- */
+.info-container {
+    flex: 1.2;
+    padding: 60px;
+    text-align: left;
+}
+
+.titulo-vino {
+    font-family: "SN Pro", sans-serif;
+    font-size: 3rem;
+    color: rgb(222, 177, 53); /* El dorado de Exportacus */
+    margin-bottom: 30px;
+}
+
+h3 {
+    color: rgb(222, 177, 53);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    margin-top: 20px;
+}
+
+.seccion-datos p, .descripcion-detallada p {
+    font-size: 1.1rem;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+/* --- GRILLA TÉCNICA (Las cajitas blancas) --- */
+.grilla-tecnica {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.tarjeta-dato {
+    background: white;
+    border: 1px solid #f0f0f0;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.tarjeta-dato:hover {
+    transform: scale(1.05); /* Mini zoom de la cajita */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Sombra más profunda al resaltar */
+    background-color: #fcfcfc; /* Un cambio de blanco muy sutil */
+}
+
+.tarjeta-dato h4 {
+    color: rgb(222, 177, 53);
+    font-size: 0.85rem;
+    text-transform: capitalize;
+    margin-bottom: 5px;
+}
+
+.tarjeta-dato p {
+    font-weight: bold;
+    color: #444;
+}
+
+.btn-volver {
+    display: inline-block;
+    margin-top: 40px;
+    color: rgb(222, 177, 53);
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.btn-volver:hover {
+    border-bottom: 2px solid rgb(191, 152, 44);
+    transform: translateX(-5px);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+    .contenedor-principal {
+        flex-direction: column;
+        width: 95vw;
+    }
+
+    .img-container {
+        padding: 20px;
+        border-right: none;
+        border-bottom: 1px solid #eee;
+    }
+
+    .info-container {
+        padding: 30px;
+    }
+
+    .titulo-vino {
+        font-size: 2.2rem;
+    }
+}
