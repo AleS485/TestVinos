@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // --- 2. EFECTO DE ESCRITURA (TYPEWRITER) ---
-    const texto = "Aca va el titulo, ECOCHANTA volvera muchas veces";
+    const texto = "Somos Exportacus S.R.L y nos dedicamos a la distribucion de vinos artesanales";
     const contenedor = document.getElementById("titulo-tipeado");
     let i = 0;
     const velocidad = 70;
